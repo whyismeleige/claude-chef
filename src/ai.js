@@ -1,4 +1,4 @@
-const SERVER_URL = "https://claude-chef-v.vercel.app/";
+const SERVER_URL = "https://localhost:5000";
 
 export async function getRecipeFromChefClaude(ingredientsArr) {
   console.log("Fetching Response from Server")

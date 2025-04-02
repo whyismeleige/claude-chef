@@ -6,10 +6,7 @@ const axios = require("axios");
 const app = express();
 const PORT = 5000;
 
-app.use(cors({
-    origin:["https://claude-chef-v.vercel.app/"],
-    methods:["GET","POST","PUT","DELETE"],
-}));
+app.use(cors());
 
 app.use(express.json()); 
 
@@ -32,7 +29,7 @@ app.post("/claude", async (req, res) => {
         }, {
             headers: {
                 "x-api-key": API_KEY,
-                "Content-Type": "application/json",
+                "content-type": "application/json",
                 "anthropic-version": "2023-06-01"
             }
         });
