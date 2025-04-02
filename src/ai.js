@@ -1,9 +1,10 @@
-const SERVER_URL = "https://claude-chef-v.vercel.app";
+const SERVER_URL = "https://.vercel.app";
 
 export async function getRecipeFromChefClaude(ingredientsArr) {
   const ingredientsString = ingredientsArr.join(",");
 
   const response = await fetch(`${SERVER_URL}/claude`, {
+    method: "GET",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ingredientsString}),
   });
