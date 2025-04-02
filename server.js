@@ -6,7 +6,10 @@ const axios = require("axios");
 const app = express();
 const PORT = 5000;
 
-app.use(cors());
+app.use(cors({
+    origin:["https://claude-chef-v.vercel.app/"],
+    methods:["GET","POST","PUT","DELETE"],
+}));
 app.use(express.json()); 
 
 const API_KEY = process.env.REACT_APP_API_KEY;
