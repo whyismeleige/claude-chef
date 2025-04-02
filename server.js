@@ -10,6 +10,7 @@ app.use(cors({
     origin:["https://claude-chef-v.vercel.app/"],
     methods:["GET","POST","PUT","DELETE"],
 }));
+
 app.use(express.json()); 
 
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -20,6 +21,7 @@ You are an assistant that receives a list of ingredients that a user has and sug
 
 app.post("/claude", async (req, res) => {
     try {
+        console.log("Inside Server")
         const { ingredientsString } = req.body;
         
         const response = await axios.post(ANTHROPIC_API_URL, {
@@ -34,7 +36,7 @@ app.post("/claude", async (req, res) => {
                 "anthropic-version": "2023-06-01"
             }
         });
-
+        console.log("Got data from the AI");
         res.json(response.data);
     } catch (error) {
         console.error("Error:", error.response ? error.response.data : error.message);
