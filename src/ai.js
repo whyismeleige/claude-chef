@@ -1,4 +1,4 @@
-const SERVER_URL = "https://localhost:5000";
+const SERVER_URL = "http://localhost:5000";
 
 export async function getRecipeFromChefClaude(ingredientsArr) {
   console.log("Fetching Response from Server")
