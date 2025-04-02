@@ -1,4 +1,4 @@
-const SERVER_URL = "https://.vercel.app";
+const SERVER_URL = "https://claude-chef-v.vercel.app/";
 
 export async function getRecipeFromChefClaude(ingredientsArr) {
   const ingredientsString = ingredientsArr.join(",");
