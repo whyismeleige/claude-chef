@@ -39,4 +39,28 @@ app.post("/claude", async (req, res) => {
     }
 });
 
+app.get("/claude", async (req, res) => {
+    try {
+        const { ingredientsString } = req.body;
+        
+        const response = await axios.post(ANTHROPIC_API_URL, {
+            model: "claude-3-haiku-20240307",
+            max_tokens: 2000,
+            system: SYSTEM_PROMPT,
+            messages: [{ role: "user", content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make!` }]
+        }, {
+            headers: {
+                "x-api-key": API_KEY,
+                "Content-Type": "application/json",
+                "anthropic-version": "2023-06-01"
+            }
+        });
+
+        res.json(response.data);
+    } catch (error) {
+        console.error("Error:", error.response ? error.response.data : error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
 app.listen(PORT, () => console.log(`Proxy server running on http://localhost:${PORT}`));
